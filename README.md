@@ -5,3 +5,8 @@ Cooperation details:
   -architecture details: thin client: webbrowser (Chrome - only) + server (Windows 2012, IIS, MS SQL)
   -developer tools: github, javascript, visual studio code, docker
  
+Create docker image:
+  docker-compose build
+
+Create/run docker container:
+  docker run -d --name flexptlbgeweb -p 80:5000 flexptlbgeweb

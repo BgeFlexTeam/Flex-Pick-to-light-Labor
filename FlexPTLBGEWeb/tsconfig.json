@@ -1,0 +1,16 @@
+{
+  "files": [
+    "wwwroot/src/flex-app.ts"
+  ],
+  "compilerOptions": {
+    "target": "es2017",
+    "outDir": "./wwwroot/src/",
+    // "rootDir": "./wwwroot/src/", /* Specify the root directory of input files. Use to control the output directory structure with --outDir. */
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true
+  },
+  "exclude": [
+    "wwwroot/lib",
+    "node_modules"
+  ]
+}

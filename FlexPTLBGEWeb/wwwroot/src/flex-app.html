@@ -1,0 +1,78 @@
+<link rel="import" href="../lib/polymer/polymer-element.html">
+<link rel="import" href="../lib/app-layout/app-drawer/app-drawer.html">
+<link rel="import" href="../lib/app-layout/app-drawer-layout/app-drawer-layout.html">
+<link rel="import" href="../lib/app-layout/app-header/app-header.html">
+<link rel="import" href="../lib/app-layout/app-header-layout/app-header-layout.html">
+<link rel="import" href="../lib/app-layout/app-scroll-effects/app-scroll-effects.html">
+<link rel="import" href="../lib/app-layout/app-toolbar/app-toolbar.html">
+<link rel="import" href="../lib/iron-pages/iron-pages.html">
+<link rel="import" href="../lib/iron-selector/iron-selector.html">
+<link rel="import" href="../lib/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="flex-icons.html">
+
+<dom-module id="flex-app">
+  <template>
+    <style>
+       :host {
+        --app-primary-color: #4285f4;
+        --app-secondary-color: black;
+
+        display: block;
+      }
+      /* app-drawer-layout:not([narrow]) [drawer-toggle] {
+        display: none;
+      } */
+
+      app-header {
+        color: #fff;
+        background-color: var(--app-primary-color);
+      }
+
+      app-header paper-icon-button {
+        --paper-icon-button-ink-color: white;
+      }
+
+      .drawer-list {
+        margin: 0 20px;
+      }
+
+      .drawer-list a {
+        display: block;
+        padding: 0 16px;
+        text-decoration: none;
+        color: var(--app-secondary-color);
+        line-height: 40px;
+      }
+
+      .drawer-list a.iron-selected {
+        color: black;
+        font-weight: bold;
+      }
+    </style>
+
+    <app-drawer-layout fullbleed narrow="{{narrow}}">
+      <!-- Drawer content -->
+      <app-drawer id="drawer" slot="drawer" swipe-open="[[narrow]]">
+        <app-toolbar>Menu</app-toolbar>
+        <iron-selector attr-for-selected="name" class="drawer-list" role="navigation">
+          <a name="station1" href="#">Station One</a>
+        </iron-selector>
+      </app-drawer>
+
+      <!-- Main content -->
+      <app-header-layout has-scrolling-region>
+
+        <app-header slot="header" condenses reveals effects="waterfall">
+          <app-toolbar>
+            <paper-icon-button icon="flex-icons:menu" drawer-toggle></paper-icon-button>
+            <div main-title>Flex Pick to light Labor</div>
+          </app-toolbar>
+        </app-header>
+
+        Content
+      </app-header-layout>
+    </app-drawer-layout>
+  </template>
+
+  <script src="flex-app.js"></script>
+</dom-module>

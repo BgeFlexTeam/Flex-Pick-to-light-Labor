@@ -8,6 +8,6 @@ services:
       context: .
       dockerfile: Dockerfile
       args:
-        source: bin/Debug/netcoreapp1.1/publish
+        source: bin/Debug/netcoreapp2.0/publish
     expose:
       - 5000

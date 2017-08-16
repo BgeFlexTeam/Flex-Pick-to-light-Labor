@@ -21,7 +21,7 @@ gulp.task("ts", function () {
     return tsProject
         .src()
         .pipe(tsProject())
-        .pipe(gulp.dest('wwwroot/dist'));
+        .pipe(gulp.dest('wwwroot/js'));
 
 });
 

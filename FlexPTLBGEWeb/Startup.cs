@@ -25,6 +25,7 @@ namespace FlexPTLBGEWeb
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+            app.UseDefaultFiles();
             app.UseStaticFiles();
 
             app.UseMvc(routes =>

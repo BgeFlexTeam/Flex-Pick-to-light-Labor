@@ -1,16 +1,37 @@
 /// <reference path="polymer.d.ts" />
+/// <reference path="polymer2-ts.ts" />
 
+@customElement("flex-app")
 class FlexApp extends Polymer.Element {
-      static get is():string { return "flex-app"; }
+	@property({ reflectToAttribute: true })
+	page: string = "station-loader";
 
-      static get properties():any {
-        return {
-          prop1: {
-            type: String,
-            value: "flex-app"
-          }
-        };
-      }
-    }
+	@property()
+	rootPath: string = "/";
 
-customElements.define(FlexApp.is, FlexApp);
+	@property()
+	subroute: string;
+
+	@property()
+	routeData: object;
+
+	@observe("routeData.page")
+	routePageChanged(page: string): void {
+		this.page = page || "station-loader";
+
+		if (!this.$.drawer.persistent) {
+			this.$.drawer.close();
+		}
+	}
+
+	@observe("page")
+	pageChanged(page: string): void {
+		const resolvedPageUrl: string = page + ".html";
+		Polymer.importHref(
+			resolvedPageUrl,
+			null,
+			null,
+			true);
+	}
+
+}

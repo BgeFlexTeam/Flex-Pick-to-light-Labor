@@ -1,6 +1,6 @@
 /// <reference path="polymer.d.ts" />
-class FlexApp extends Polymer.Element {
-    static get is() { return "flex-app"; }
+class UnitCreation extends Polymer.Element {
+    static get is() { return "unit-creation"; }
     static get properties() {
         return {
             prop1: {
@@ -10,4 +10,4 @@ class FlexApp extends Polymer.Element {
         };
     }
 }
-customElements.define(FlexApp.is, FlexApp);
+customElements.define(UnitCreation.is, UnitCreation);

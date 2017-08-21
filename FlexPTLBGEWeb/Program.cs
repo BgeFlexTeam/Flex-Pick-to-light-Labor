@@ -12,20 +12,33 @@ namespace FlexPTLBGEWeb
 {
     public class Program
     {
-         public static IConfigurationRoot Configuration { get; set; }
         public static void Main(string[] args)
         {
-           // BuildWebHost(args).Run();
-             var builder = new ConfigurationBuilder()
-             .SetBasePath(Directory.GetCurrentDirectory())
-            .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true);
-
-             Configuration = builder.Build();
+            BuildWebHost(args)
+              .Run();
         }
 
-        public static IWebHost BuildWebHost(string[] args) =>
-            WebHost.CreateDefaultBuilder(args)            
-                .UseStartup<Startup>()
-                .Build();
+        public static IWebHost BuildWebHost(string[] args)
+        {
+            return WebHost.CreateDefaultBuilder()
+              .ConfigureAppConfiguration(ConfigConfiguration)
+              .ConfigureLogging(ConfigureLogger)
+              .UseStartup<Startup>()
+              .Build();
+        }
+
+        static void ConfigConfiguration(WebHostBuilderContext ctx, IConfigurationBuilder config)
+        {
+            config.SetBasePath(Directory.GetCurrentDirectory())
+              .AddJsonFile("appsettings.json", false, true)
+              .AddEnvironmentVariables();
+        }
+
+        static void ConfigureLogger(WebHostBuilderContext ctx, ILoggingBuilder logging)
+        {
+            logging.AddConfiguration(ctx.Configuration.GetSection("Logging"));
+            logging.AddConsole();
+            logging.AddDebug();
+        }
     }
 }

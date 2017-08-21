@@ -1,7 +1,7 @@
 {
-  "files": [
-    "wwwroot/src/*.ts"
-  ],
+  // "files": [
+  //   "wwwroot/src/*.ts"
+  // ],
   "compilerOptions": {
     "target": "es2017",
     "rootDir": "wwwroot/src",
@@ -10,6 +10,9 @@
     "emitDecoratorMetadata": true
   },
   "exclude": [
-    "wwwroot/lib"
+    "bower_components",
+    "node_modules",
+    "wwwroot/lib",
+    "bin"
   ]
 }

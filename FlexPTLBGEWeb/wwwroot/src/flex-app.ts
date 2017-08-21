@@ -4,10 +4,10 @@
 @customElement("flex-app")
 class FlexApp extends Polymer.Element {
 	@property({ reflectToAttribute: true })
-	page: string = "station-loader";
+	page: string;
 
 	@property()
-	rootPath: string = "/";
+	rootPath: string;
 
 	@property()
 	subroute: string;

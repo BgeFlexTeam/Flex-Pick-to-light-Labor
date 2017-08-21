@@ -16,19 +16,22 @@ let UnitCreationStation = class UnitCreationStation extends Polymer.Element {
         this.$.productSelector.focused = true;
         this.loadProducts();
     }
-    loadProducts() {
+    async loadProducts() {
         try {
+            // const serialNumber = await Part.GetPart("partnumber01");
+            await Project.Fetch.Post(`/api/Part/GetProducts`);
         }
         catch (error) {
+            console.log(error);
         }
     }
 };
 __decorate([
-    property({ type: String }),
+    property(),
     __metadata("design:type", String)
 ], UnitCreationStation.prototype, "productName", void 0);
 __decorate([
-    property({ type: String }),
+    property(),
     __metadata("design:type", String)
 ], UnitCreationStation.prototype, "serialNumber", void 0);
 UnitCreationStation = __decorate([

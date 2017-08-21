@@ -1,12 +1,13 @@
- using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc;
 using FlexPTLBGEWeb.Models;
 
+namespace FlexPTLBGEWeb.Controllers
+{
 
-// namespace FlexPTLBGEWeb.Controllers 
- 
- [Route("api")]
- public class AssemblyController : Controller{
+    [Route("api")]
+    public class AssemblyController : Controller
+    {
 
 
- }
- 
+    }
+}

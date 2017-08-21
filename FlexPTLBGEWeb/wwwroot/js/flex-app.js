@@ -10,13 +10,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 let FlexApp = class FlexApp extends Polymer.Element {
-    /// <reference path="polymer.d.ts" />
-    /// <reference path="polymer2-ts.ts" />
-    constructor() {
-        super(...arguments);
-        this.page = "station-loader";
-        this.rootPath = "/";
-    }
     routePageChanged(page) {
         this.page = page || "station-loader";
         if (!this.$.drawer.persistent) {

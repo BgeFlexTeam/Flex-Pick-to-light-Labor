@@ -4,10 +4,10 @@
 @customElement("unit-creation-station")
 class UnitCreationStation extends Polymer.Element {
 
-    @property({ type: String })
+    @property()
     productName: string;
 
-    @property({ type: String })
+    @property()
     serialNumber: string;
 
     connectedCallback(): void {
@@ -15,17 +15,17 @@ class UnitCreationStation extends Polymer.Element {
         this.$.productSelector.focus();
         this.$.productSelector.focused = true;
 
-        this.$.loadProducts();
+        this.loadProducts();
     }
- 
-    public async loadProducts() : Promise<void> {
+
+    public async loadProducts(): Promise<void> {
         try {
             // const serialNumber = await Part.GetPart("partnumber01");
-            
-                await Fetch.Post(`Part/GetProducts`);
-            
+
+            await Project.Fetch.Post(`/api/Part/GetProducts`);
+
         } catch (error) {
-           console.log(error);
+            console.log(error);
         }
     }
 }

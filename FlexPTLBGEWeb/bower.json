@@ -16,6 +16,7 @@
     "polymer": "Polymer/polymer#^2.0.2",
     "webcomponentsjs": "webcomponents/webcomponentsjs#^1.0.0",
     "polymer2-ts": "^1.1.22"
+    
   },
   "resolutions": {
     "polymer": "^2.0.2"

@@ -1,6 +1,37 @@
+<!-- <link rel="import" href="./lib/paper-icon-button.html"> -->
+<script src="./lib/webcomponentsjs/webcomponents-lite.js"></script>
+<link rel="import" href="./lib/paper-input/paper-input.html">
+<link rel="import" href="./lib/paper-button/paper-button.html">
+<link rel="import" href="./lib/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="./lib/vaadin-combo-box/vaadin-combo-box.html">
+<link rel="import" href="./lib/iron-icon/iron-icon.html">
+
 <dom-module id="unit-creation-station">
 	<template>
-		Unit creation...
+		<link rel="stylesheet" href="./unit-creation-station.css">
+		<div class="card">
+			<div>
+				<h1>Create new Product and print label with SerialNumber</h1>
+				<!-- <paper-input id="txtSerialNumber" label="Serial Number"></paper-input> -->
+				<vaadin-combo-box id="productSelector" label="Select Product">
+						<template>
+						  <paper-icon-item>
+							<!-- <img src="[[item.picture.thumbnail]]" item-icon>
+							<paper-item-body two-line>
+							  <div>[[item.name.first]] [[item.name.last]]</div>
+							  <div secondary>[[item.email]]</div>
+							</paper-item-body> -->
+						  </paper-icon-item>
+						</template>
+					  </vaadin-combo-box>
+				<paper-button id="btnOk" on-click="_btnOkClick" raised>Create</paper-button>
+			</div>
+
+
+		</div>
+
+
+
 	</template>
 	<script src="js/unit-creation-station.js"></script>
 </dom-module>

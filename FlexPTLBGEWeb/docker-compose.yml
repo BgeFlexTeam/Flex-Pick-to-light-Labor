@@ -10,4 +10,4 @@ services:
       args:
         source: bin/Debug/netcoreapp2.0/publish
     expose:
-      - 5000
+       - 5000

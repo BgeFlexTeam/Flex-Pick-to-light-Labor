@@ -15,7 +15,7 @@
 
 <link rel="import" href="lib/polymer2-ts/polymer2-ts.html">
 
-<link rel="import" href="station-loader.html">
+<link rel="import" href="station-chooser.html">
 <link rel="lazy-import" href="unit-creation-station.html">
 <link rel="lazy-import" href="kitting-station.html">
 <link rel="lazy-import" href="assembly-station.html">
@@ -25,15 +25,26 @@
 	<template>
 		<style>
 			:host {
-				--app-primary-color: #4285f4;
-				--app-secondary-color: black;
+				--app-primary-color: black;
+				--app-secondary-color: #003366;
 
 				display: block;
 			}
 
-			app-header {
+			app-header,
+			footer {
 				color: #fff;
 				background-color: var(--app-primary-color);
+			}
+
+			footer {
+				height: 30px;
+				line-height: 30px;
+				text-align: center;
+				font-size: 12px;
+				position: absolute;
+				bottom: 0;
+				width:100vw;
 			}
 
 			app-header paper-icon-button {
@@ -56,6 +67,18 @@
 				color: black;
 				font-weight: bold;
 			}
+
+			.content {
+				@apply --layout-flex;
+			}
+
+			a {
+				color: black;
+			}
+
+			.logo {
+				float: right;
+			}
 		</style>
 
 		<app-location route="{{route}}" url-space-regex="^[[rootPath]]"></app-location>
@@ -65,7 +88,7 @@
 			<app-drawer id="drawer" slot="drawer">
 				<app-toolbar>Menu</app-toolbar>
 				<iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-list" role="navigation">
-					<a name="station-loader" href="[[rootPath]]station-loader">Station loader</a>
+					<a name="station-chooser" href="[[rootPath]]station-chooser">Station chooser</a>
 					<a name="unit-creation-station" href="[[rootPath]]unit-creation-station">Unit creation</a>
 					<a name="kitting-station" href="[[rootPath]]kitting-station">Kitting</a>
 					<a name="assembly-station" href="[[rootPath]]assembly-station">Assembly</a>
@@ -79,16 +102,23 @@
 					<app-toolbar>
 						<paper-icon-button icon="flex-icons:menu" drawer-toggle></paper-icon-button>
 						<div main-title>Flex Pick to light Labor</div>
+						<img src="img/logo.png" class="logo"/>
 					</app-toolbar>
 				</app-header>
 
-				<iron-pages selected="[[page]]" attr-for-selected="name" role="main">
-					<station-loader name="station-loader"></station-loader>
-					<unit-creation-station name="unit-creation-station"></unit-creation-station>
-					<kitting-station name="kitting-station"></kitting-station>
-					<assembly-station name="assembly-station"></assembly-station>
-					<pack-station name="pack-station"></pack-station>
-				</iron-pages>
+				<div class="content">
+					<iron-pages selected="[[page]]" attr-for-selected="name" role="main">
+						<station-chooser name="station-chooser"></station-chooser>
+						<unit-creation-station name="unit-creation-station"></unit-creation-station>
+						<kitting-station name="kitting-station"></kitting-station>
+						<assembly-station name="assembly-station"></assembly-station>
+						<pack-station name="pack-station"></pack-station>
+					</iron-pages>
+				</div>
+
+				<footer>
+					&copy; 2017 - Flex
+				</footer>
 
 			</app-header-layout>
 		</app-drawer-layout>

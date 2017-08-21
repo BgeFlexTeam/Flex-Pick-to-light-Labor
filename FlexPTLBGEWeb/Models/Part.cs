@@ -7,6 +7,6 @@ namespace FlexPTLBGEWeb.Models {
 		public string PTLLocation { get; set; }		
 		public int? Count { get; set; }
 		
-		public virtual PartFamily PartFamily { get; set; }	
+		/*public virtual PartFamily PartFamily { get; set; }*/	
 	}
 }

@@ -46,7 +46,7 @@ namespace FlexPTLBGEWeb.Controllers
         public void createSN(Part p){
               // DynamicParameters parameters = new DynamicParameters();       
                 // parameters.Add("@PartNumber", partNumber);
-               
+             
             string sql = " INSERT INTO [Product] VALUES ('111',5,'2017-08-21');";
             using (SqlConnection connection = new SqlConnection(connectionString))
             {

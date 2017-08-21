@@ -18,8 +18,16 @@ let UnitCreationStation = class UnitCreationStation extends Polymer.Element {
     }
     async loadProducts() {
         try {
-            // const serialNumber = await Part.GetPart("partnumber01");
-            await Project.Fetch.Post(`/api/Part/GetProducts`);
+            let list = await Project.Fetch.Post(`/api/Part/GetProducts`);
+            this.$.productSelector.items = list;
+        }
+        catch (error) {
+            console.log(error);
+        }
+    }
+    async createSNTap() {
+        try {
+            let response = await Project.Fetch.Post(`/api/Part/createSN`, this.$.productSelector.selectedItem);
         }
         catch (error) {
             console.log(error);

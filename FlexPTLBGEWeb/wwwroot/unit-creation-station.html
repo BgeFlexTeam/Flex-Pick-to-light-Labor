@@ -12,19 +12,16 @@
 		<div class="card">
 			<div>
 				<h1>Create new Product and print label with SerialNumber</h1>
-				<!-- <paper-input id="txtSerialNumber" label="Serial Number"></paper-input> -->
-				<vaadin-combo-box id="productSelector" label="Select Product">
-						<template>
-						  <paper-icon-item>
-							<!-- <img src="[[item.picture.thumbnail]]" item-icon>
-							<paper-item-body two-line>
-							  <div>[[item.name.first]] [[item.name.last]]</div>
-							  <div secondary>[[item.email]]</div>
-							</paper-item-body> -->
-						  </paper-icon-item>
+			
+				<vaadin-combo-box id="productSelector" label="Select Product" items="[[items]]"  item-label-path="partName" item-value-path="ID">
+						<template>											
+							<paper-item-body>
+							  <div>[[item.partName]]</div>							
+							</paper-item-body> 						
 						</template>
-					  </vaadin-combo-box>
-				<paper-button id="btnOk" on-click="_btnOkClick" raised>Create</paper-button>
+				</vaadin-combo-box>
+
+				<paper-button id="btnOk"  on-tap="createSNTap"  raised>Create</paper-button>
 			</div>
 
 

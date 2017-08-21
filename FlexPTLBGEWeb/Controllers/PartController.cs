@@ -38,10 +38,23 @@ namespace FlexPTLBGEWeb.Controllers
                 connection.Open();
                 // DynamicParameters parameters = new DynamicParameters();       
                 // parameters.Add("@PartNumber", partNumber);
-                List<Part> result = connection.Query<Part>("SELECT PartName FROM Part WHERE PTLLocation IS NULL").ToList();
+                List<Part> result = connection.Query<Part>("SELECT * FROM Part WHERE PTLLocation IS NULL").ToList();
                 return result;
             }
         }
-
+         [HttpPost]
+        public void createSN(Part p){
+              // DynamicParameters parameters = new DynamicParameters();       
+                // parameters.Add("@PartNumber", partNumber);
+               
+            string sql = " INSERT INTO [Product] VALUES ('111',5,'2017-08-21');";
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                 connection.Open();
+                 //DynamicParameters parameters = new DynamicParameters();
+                 //parameters.Add("@PartID", partName);
+                connection.Execute(sql);              
+            }            
+        }
     }
 }

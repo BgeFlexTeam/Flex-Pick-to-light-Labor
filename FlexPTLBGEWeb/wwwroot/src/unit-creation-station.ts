@@ -20,10 +20,16 @@ class UnitCreationStation extends Polymer.Element {
 
     public async loadProducts(): Promise<void> {
         try {
-            // const serialNumber = await Part.GetPart("partnumber01");
+            let list: Array<number> = await Project.Fetch.Post(`/api/Part/GetProducts`);
+            this.$.productSelector.items = list;
+        } catch (error) {
+            console.log(error);
+        }
+    }
 
-            await Project.Fetch.Post(`/api/Part/GetProducts`);
-
+    async createSNTap(): Promise<void> {
+        try {
+            let response : any = await Project.Fetch.Post(`/api/Part/createSN`, this.$.productSelector.selectedItem);
         } catch (error) {
             console.log(error);
         }

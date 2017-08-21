@@ -49,7 +49,7 @@ namespace Project {
         }
 
         static async Post(url: string, parameter: object = undefined, type: FetchType = FetchType.json): Promise<any> {
-            const headers: Headers = new Headers();
+        const headers: Headers = new Headers();
 
             const response: Response = await fetch(url, {
                 method: "POST",
@@ -75,11 +75,20 @@ namespace Project {
                 try {
                     error = await response.clone().json();
                 } catch (error) {
-                    throw new ResponseError(response);
+                    throw new ResponseError(response);  
                 }
                 throw new ServerError(response, error);
             }
         }
     }
+
+     export class Part {
+        public ID: number;
+        public PartName: string;
+        public PartFamilyID: number;
+        public PTLLocation: string ;
+        public Count: number;
+    }
+
 
 }

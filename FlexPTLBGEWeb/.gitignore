@@ -267,4 +267,7 @@ __pycache__/
 # Cake - Uncomment if you are using it
 # tools/
 
-bower_components
+bower_components/
+node_modules/
+wwwroot/lib/
+wwwroot/js/

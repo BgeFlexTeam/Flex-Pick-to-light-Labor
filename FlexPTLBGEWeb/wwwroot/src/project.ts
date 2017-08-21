@@ -49,7 +49,8 @@ namespace Project {
         }
 
         static async Post(url: string, parameter: object = undefined, type: FetchType = FetchType.json): Promise<any> {
-        const headers: Headers = new Headers();
+            const headers: Headers = new Headers();
+            headers.append(`Content-Type`, `application/json`);
 
             const response: Response = await fetch(url, {
                 method: "POST",

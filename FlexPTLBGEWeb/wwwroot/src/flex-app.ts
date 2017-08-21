@@ -17,7 +17,7 @@ class FlexApp extends Polymer.Element {
 
 	@observe("routeData.page")
 	routePageChanged(page: string): void {
-		this.page = page || "station-loader";
+		this.page = page || "station-chooser";
 
 		if (!this.$.drawer.persistent) {
 			this.$.drawer.close();

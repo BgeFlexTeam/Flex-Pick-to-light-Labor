@@ -11,7 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 let FlexApp = class FlexApp extends Polymer.Element {
     routePageChanged(page) {
-        this.page = page || "station-loader";
+        this.page = page || "station-chooser";
         if (!this.$.drawer.persistent) {
             this.$.drawer.close();
         }

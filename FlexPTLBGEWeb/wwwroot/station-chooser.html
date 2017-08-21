@@ -1,6 +1,6 @@
 <link rel="import" href="lib/app-layout/app-grid/app-grid-style.html">
 
-<dom-module id="station-loader">
+<dom-module id="station-chooser">
 	<template>
 		<style include="app-grid-style">
 			:host {
@@ -15,29 +15,48 @@
 
 			.card {
 				margin: 24px;
-				padding: 30px;
-				color: #757575;
+				padding: 26px;
+				height: 70px;
+				color: #003366;
 				border-radius: 5px;
 				background-color: #fff;
 				box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+				font-size: 24px;
 			}
+
+			img {
+				float: right;
+			}
+
+			a {
+				text-decoration: none;
+			}
+
 		</style>
 		<ul class="app-grid" id="placement">
 			<li class="item">
-				<div class="card"><a href="unit-creation-station">Unit Creation</a></div>
+				<a href="unit-creation-station">
+					<div class="card">Unit Creation<img src="img/station1.png" /></div>
+				</a>
 			</li>
 			<li class="item">
-				<div class="card"><a href="kitting-station">Kitting</a></div>
+				<a href="kitting-station">
+					<div class="card">Kitting<img src="img/station2.png" /></div>
+				</a>
 			</li>
 		</ul>
 		<ul class="app-grid" id="inspection">
 			<li class="item">
-				<div class="card"><a href="assembly-station">Assembly</a></div>
+				<a href="assembly-station">
+					<div class="card">Assembly<img src="img/station3.png" /></div>
+				</a>
 			</li>
 			<li class="item">
-				<div class="card"><a href="pack-station">Pack</a></div>
+				<a href="pack-station">
+					<div class="card">Pack<img src="img/station4.png" /></div>
+				</a>
 			</li>
 		</ul>
 	</template>
-	<script src="js/station-loader.js"></script>
+	<script src="js/station-chooser.js"></script>
 </dom-module>

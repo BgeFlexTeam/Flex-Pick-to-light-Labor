@@ -41,8 +41,9 @@ namespace FlexPTLBGEWeb.Controllers
          [HttpPost]
         public Part createSN([FromBody]Part p){
             using (SqlConnection connection = new SqlConnection(connectionString)) {
-                var id = connection.Insert(p);
-                return connection.Get<Part>(id);
+            connection.Open();
+             string sqlQuery = "INSERT INTO Product VALUES (@sn,@i,@d)";
+             sqlConnection.Execute(sqlQuery,    new {'asd', 5, '2017-05-01'});
             }
         }
     }

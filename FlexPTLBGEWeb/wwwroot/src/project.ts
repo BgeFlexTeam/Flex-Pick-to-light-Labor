@@ -60,6 +60,29 @@ namespace Project {
             return this.Result(response, type);
         }
 
+        static async LocalPost(url: string, parameter: object = undefined, type: FetchType = FetchType.json): Promise<any> {
+			const headers: Headers = new Headers();
+			headers.append(`Content-Type`, `application/x-www-form-urlencoded;charset=UTF-8`);
+			headers.append(`Access-Control-Allow-Origin`, `*`);
+			headers.append(`Access-Control-Allow-Methods`, `OPTIONS, POST`);
+			headers.append(`Access-Control-Allow-Headers`, `Content-Type`);
+
+			let params: any = undefined;
+			if (parameter) {
+				params = Object.keys(parameter).map((key) => {
+					return encodeURIComponent(key) + "=" + encodeURIComponent(parameter[key]);
+				}).join("&");
+			}
+
+			const response: Response = await fetch(url, {
+				method: "POST",
+				headers: headers,
+				body: params,
+				mode: "cors"
+			});
+			return this.Result(response, type);
+		}
+
         private static async Result(response: Response, type: FetchType = FetchType.json): Promise<any> {
             if (response.ok) {
                 if (response.status === 200) {
@@ -81,6 +104,18 @@ namespace Project {
                 throw new ServerError(response, error);
             }
         }
+    }
+
+    export class Label {
+        public static async Print(serialNumber: string): Promise<any> {
+			let result: any = await Fetch.Post("/api/Label/Print", { serialNumber: serialNumber }, FetchType.text);
+			if (result != null) {
+				return await Fetch.LocalPost(`http://localhost:5002/api/print`, {
+					labelContent: result,
+					printerName: "zebra"
+				});
+			}
+		}
     }
 
      export class Part {

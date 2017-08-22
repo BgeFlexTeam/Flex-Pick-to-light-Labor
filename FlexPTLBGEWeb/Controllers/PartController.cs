@@ -38,9 +38,10 @@ namespace FlexPTLBGEWeb.Controllers
                 return result;
             }
         }
-         [HttpPost]
+
+        [HttpPost]
         public Product createSN([FromBody] Part p){           
-            using (SqlConnection connection = new SqlConnection(connectionString)) {              
+            using (SqlConnection connection = new SqlConnection(connectionString)) {
                 Product pr = new Product();
                 pr.ID = 10;
                 pr.SerialNumber=System.DateTime.Now.ToString("yyyyMMddHHmmss");

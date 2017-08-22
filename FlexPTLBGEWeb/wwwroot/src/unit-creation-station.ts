@@ -4,11 +4,11 @@
 @customElement("unit-creation-station")
 class UnitCreationStation extends Polymer.Element {
 
-    @property()
-    productName: string;
+    // @property()
+    // productName: string;
 
-    @property()
-    serialNumber: string;
+    // @property()
+    // serialNumber: string;
 
     connectedCallback(): void {
         super.connectedCallback();

@@ -84,18 +84,18 @@ namespace Project {
     }
 
      export class Part {
-        public ID: number;
-        public PartName: string;
-        public PartFamilyID: number;
-        public PTLLocation: string;
+        public id: number;
+        public partName: string;
+        public partFamilyID: number;
+        public pTLLocation: string;
     }
 
      export class Product {
-        public ID: number;
-        public SerialNumber: string;
-        public PartID: number;
-        public CreationTime: Date;
-        public IsComplete: boolean;
+        public id: number;
+        public serialNumber: string;
+        public partID: number;
+        public creationTime: Date;
+        public isComplete: boolean;
     }
 
 

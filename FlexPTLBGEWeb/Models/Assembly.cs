@@ -3,7 +3,7 @@ using System;
 
 namespace FlexPTLBGEWeb.Models {
 	public class Assembly {
-		public int Id { get; set; }
+		public int ID { get; set; }
 		public string SerialNumber { get; set; }			
 		public int AssembledPartID { get; set; }
 		public DateTime AssembledTime {get;set;}

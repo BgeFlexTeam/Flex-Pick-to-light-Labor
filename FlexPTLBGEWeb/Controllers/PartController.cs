@@ -43,7 +43,6 @@ namespace FlexPTLBGEWeb.Controllers
         public Product createSN([FromBody] Part p){           
             using (SqlConnection connection = new SqlConnection(connectionString)) {
                 Product pr = new Product();
-                pr.ID = 10;
                 pr.SerialNumber=System.DateTime.Now.ToString("yyyyMMddHHmmss");
                 pr.PartID=p.ID;
 	            pr.CreationTime=System.DateTime.Now;    

@@ -7,7 +7,7 @@ namespace FlexPTLBGEWeb.Models {
 		[Key]
 		public int ID { get; set; }
 		public string PartName { get; set; }
-        public int? PartFamilyID { get; set; }
+        public int PartFamilyID { get; set; }
 		public string PTLLocation { get; set; }
 		public string Code { get; set; }
 	}

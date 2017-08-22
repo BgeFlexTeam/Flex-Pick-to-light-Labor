@@ -28,8 +28,8 @@ class PackStation extends Polymer.Element {
         this.$.finishlabel.innerText = "loading...";
         try {
             let p: Project.Product = new Project.Product();
-            p.SerialNumber = this.$.finishSnInputBox.value;
-            if (p.SerialNumber != null) {
+            p.serialNumber = this.$.finishSnInputBox.value;
+            if (p.serialNumber != null) {
                 let response: any = await Project.Fetch.Post(`/api/Product/packSN`, p);
                 return response;
             } else {

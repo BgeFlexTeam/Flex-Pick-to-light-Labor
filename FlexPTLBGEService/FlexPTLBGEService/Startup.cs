@@ -1,4 +1,5 @@
-﻿using Owin;
+﻿using Microsoft.Owin.Cors;
+using Owin;
 using System.Web.Http;
 
 namespace FlexPTLBGEService
@@ -14,6 +15,7 @@ namespace FlexPTLBGEService
                 defaults: new { id = RouteParameter.Optional }
             );
 
+            appBuilder.UseCors(CorsOptions.AllowAll);
             appBuilder.UseWebApi(config);
         }
     }

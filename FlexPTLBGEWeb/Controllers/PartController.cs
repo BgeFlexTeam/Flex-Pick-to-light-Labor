@@ -39,12 +39,16 @@ namespace FlexPTLBGEWeb.Controllers
             }
         }
          [HttpPost]
-        public Part createSN([FromBody]Part p){
-            using (SqlConnection connection = new SqlConnection(connectionString)) {
-            connection.Open();
-             string sqlQuery = "INSERT INTO Product VALUES (@sn,@i,@d)";
-             sqlConnection.Execute(sqlQuery,    new {'asd', 5, '2017-05-01'});
-            }
+        public Product createSN([FromBody] Part p){           
+            using (SqlConnection connection = new SqlConnection(connectionString)) {              
+                Product pr = new Product();
+                pr.ID = 10;
+                pr.SerialNumber=System.DateTime.Now.ToString("yyyyMMddHHmmss");
+                pr.PartID=p.ID;
+	            pr.CreationTime=System.DateTime.Now;    
+                var id = connection.Insert(pr);                
+                return connection.Get<Product>(id);
+            }  
         }
     }
 }

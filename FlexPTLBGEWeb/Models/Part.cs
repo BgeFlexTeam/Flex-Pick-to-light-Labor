@@ -1,7 +1,11 @@
+using System;
+using Dapper.Contrib.Extensions;
 
 namespace FlexPTLBGEWeb.Models {
+	[Table ("Part")]
 	public class Part {
-		public int Id { get; set; }
+		[Key]
+		public int ID { get; set; }
 		public string PartName { get; set; }
         public int? PartFamilyID { get; set; }
 		public string PTLLocation { get; set; }		

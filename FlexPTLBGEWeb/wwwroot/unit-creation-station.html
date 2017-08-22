@@ -7,21 +7,41 @@
 <link rel="import" href="./lib/iron-icon/iron-icon.html">
 
 <dom-module id="unit-creation-station">
+	<style is="custom-style">
+		paper-icon-item {
+			margin: -13px -16px;
+		}
+		
+		paper-icon-item img {
+			border-radius: 50%;
+		}
+	</style>
 	<template>
-		<link rel="stylesheet" href="./unit-creation-station.css">
+		<link rel="stylesheet" href="./unit-creation-station.css" />
 		<div class="card">
 			<div>
 				<h1>Create new Product and print label with SerialNumber</h1>
-			
-				<vaadin-combo-box id="productSelector" label="Select Product" items="[[items]]"  item-label-path="partName" item-value-path="ID">
-						<template>											
+
+				<vaadin-combo-box id="productSelector" label="Select Product" items="[[items]]" item-label-path="partName" item-value-path="ID">
+					<template>
+						<paper-icon-item>
+							<img src="./img/[[item.partName]].png" item-icon height="50px">
 							<paper-item-body>
+								<div>[[item.partName]]</div>
+							</paper-item-body>
+						</paper-icon-item>
+						<!--<paper-item-body>
 							  <div>[[item.partName]]</div>							
-							</paper-item-body> 						
-						</template>
+							</paper-item-body> 						-->
+					</template>
 				</vaadin-combo-box>
 
-				<paper-button id="btnOk"  on-tap="createSNTap"  raised>Create</paper-button>
+				<!--<paper-button id="btnOk" on-tap="createSNTap" raised>Create</paper-button> <br />-->
+				<iron-label>
+					<paper-button id="btnOk" on-tap="createSNTap" raised>Create</paper-button>
+					<span id="responselabel"></span>
+				</iron-label>
+				<!--<label id="responselabel" style="width:200px"></label>-->
 			</div>
 
 

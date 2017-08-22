@@ -74,4 +74,7 @@ var Project;
     class Part {
     }
     Project.Part = Part;
+    class Product {
+    }
+    Project.Product = Product;
 })(Project || (Project = {}));

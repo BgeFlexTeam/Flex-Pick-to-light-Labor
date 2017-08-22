@@ -27,12 +27,27 @@ class UnitCreationStation extends Polymer.Element {
         }
     }
 
-    async createSNTap(): Promise<void> {
+    async createSNTap(): Promise<any> {
+        let myproduct: Project.Product = await this.createSN();
+        if (myproduct != null) {
+            this.$.responselabel.innerText = "Generated SerialNumber is: " + myproduct.serialNumber;
+        } else {
+            this.$.responselabel.innerText = "SerialNumber is not generated.";
+        }
+    }
+
+    async createSN(): Promise<Project.Product> {
+        this.$.responselabel.innerText = "loading...";
         try {
-            let x : Project.Part = this.$.productSelector.selectedItem;
-            let response : any = await Project.Fetch.Post(`/api/Part/createSN`, x);
+            let x: Project.Part = this.$.productSelector.selectedItem;
+            if (x != null) {
+                let response: any = await Project.Fetch.Post(`/api/Part/createSN`, x);
+                 return response;
+            } else {
+                return null;
+            }
         } catch (error) {
-            console.log(error);
+            return null;
         }
     }
 }

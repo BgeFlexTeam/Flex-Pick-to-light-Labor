@@ -88,7 +88,6 @@ namespace Project {
         public PartName: string;
         public PartFamilyID: number;
         public PTLLocation: string;
-        public Count: number;
     }
 
      export class Product {
@@ -96,6 +95,7 @@ namespace Project {
         public SerialNumber: string;
         public PartID: number;
         public CreationTime: Date;
+        public IsComplete: boolean;
     }
 
 

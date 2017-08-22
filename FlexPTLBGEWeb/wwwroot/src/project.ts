@@ -88,6 +88,7 @@ namespace Project {
         public PartName: string;
         public PartFamilyID: number;
         public PTLLocation: string;
+        public Code: string;
     }
 
      export class Product {

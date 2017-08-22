@@ -9,5 +9,6 @@ namespace FlexPTLBGEWeb.Models {
 		public string PartName { get; set; }
         public int? PartFamilyID { get; set; }
 		public string PTLLocation { get; set; }
+		public string Code { get; set; }
 	}
 }

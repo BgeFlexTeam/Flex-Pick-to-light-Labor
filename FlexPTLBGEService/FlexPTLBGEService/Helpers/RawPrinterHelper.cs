@@ -46,7 +46,7 @@ namespace FlexPTLBGEService.Helpers
             DOCINFOA di = new DOCINFOA();
             bool bSuccess = false; // Assume failure unless you specifically succeed.
 
-            di.pDocName = "SerialNumber";
+            di.pDocName = "Zebra RAW Document";
             di.pDataType = "RAW";
 
             // Open the printer.

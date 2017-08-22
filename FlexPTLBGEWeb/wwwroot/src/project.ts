@@ -87,7 +87,6 @@ namespace Project {
         public id: number;
         public partName: string;
         public partFamilyID: number;
-        public pTLLocation: string;
         public Code: string;
     }
 

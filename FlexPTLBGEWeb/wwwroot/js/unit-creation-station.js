@@ -15,6 +15,8 @@ let UnitCreationStation = class UnitCreationStation extends Polymer.Element {
         super.connectedCallback();
         this.$.productSelector.focus();
         this.$.productSelector.focused = true;
+        this.$.responselabel.innerText = "";
+        this.$.productSelector.selectedItem = null;
         this.loadProducts();
     }
     async loadProducts() {

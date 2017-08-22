@@ -7,6 +7,8 @@ class PackStation extends Polymer.Element {
         super.connectedCallback();
         this.$.finishSnInputBox.focus();
         this.$.finishSnInputBox.focused = true;
+        this.$.finishSnInputBox.value="";
+         this.$.finishlabel.innerText ="";
     }
 
     async packSNTap(): Promise<any> {

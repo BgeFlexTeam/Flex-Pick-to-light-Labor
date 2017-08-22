@@ -34,10 +34,10 @@ namespace FlexPTLBGEWeb.Controllers
                 connection.Open();
                 // DynamicParameters parameters = new DynamicParameters();       
                 // parameters.Add("@PartNumber", partNumber);
-                List<Part> result = connection.Query<Part>("SELECT * FROM Part WHERE PTLLocation IS NULL").ToList();
+                List<Part> result = connection.Query<Part>("SELECT * FROM Part WHERE PartFamilyID = (SELECT ID FROM PartFamily WHERE PartFamilyName = 'Product')").ToList();
                 return result;
             }
-        }
+        }   
 
         [HttpPost]
         public Product createSN([FromBody] Part p){           

@@ -46,7 +46,14 @@ namespace FlexPTLBGEWeb.Controllers
                 pr.SerialNumber=System.DateTime.Now.ToString("yyyyMMddHHmmss");
                 pr.PartID=p.ID;
 	            pr.CreationTime=System.DateTime.Now;    
-                var id = connection.Insert(pr);                
+                var id = connection.Insert(pr);
+                
+                DynamicParameters parameters = new DynamicParameters();
+                parameters.Add("@SerialNumber", pr.SerialNumber);
+                parameters.Add("@partID", p.ID);
+                var sql = "INSERT INTO [Assembly] SELECT @SerialNumber, PartID, AssemblyOrder, null FROM [BOM] WHERE ParentID = @partID";
+                connection.Execute(sql, parameters);
+
                 return connection.Get<Product>(id);
             }  
         }

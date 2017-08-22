@@ -97,6 +97,18 @@ namespace Project {
         public creationTime: Date;
         public isComplete: boolean;
     }
-
+      export class Bom {
+        public id: number;
+        public parentID: number;
+        public partID: number;
+        public assemblyOrder: number;
+    }
+     export class Assembly {
+        public id: number;
+        public serialNumber: number;
+        public assembledPartID: number;
+        public assemblyOrder: number;
+        public AssembledTime: Date;
+    }
 
 }

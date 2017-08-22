@@ -22,7 +22,7 @@ using Dapper.Contrib.Extensions;
             connectionString = this.options.DefaultConnection;
         }
 
-         [HttpPost]       
+        [HttpPost]       
         public Product packSN([FromBody] Product p)
         {
             if(p != null && p.SerialNumber.Length>0){
@@ -42,5 +42,25 @@ using Dapper.Contrib.Extensions;
                 return null;
             }
         }
+
+        [HttpPost]       
+        public Product getProductBySN([FromBody] Product p)
+        {
+            if(p != null && p.SerialNumber.Length>0){
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+                    DynamicParameters parameters = new DynamicParameters();
+                    string serialnumber = p.SerialNumber;
+                    parameters.Add("@SerialNumber", serialnumber);
+                    var sql = "SELECT * FROM Product WHERE SerialNumber = @SerialNumber";
+                    Product myproduct = connection.QueryFirst<Product>(sql, parameters);                       
+                    return myproduct;   
+                }
+            }else{
+                return null;
+            }
+        }
+        
     }
 }

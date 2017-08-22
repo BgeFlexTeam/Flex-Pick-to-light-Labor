@@ -77,4 +77,10 @@ var Project;
     class Product {
     }
     Project.Product = Product;
+    class Bom {
+    }
+    Project.Bom = Bom;
+    class Assembly {
+    }
+    Project.Assembly = Assembly;
 })(Project || (Project = {}));

@@ -76,7 +76,7 @@ namespace Project {
                 try {
                     error = await response.clone().json();
                 } catch (error) {
-                    throw new ResponseError(response);  
+                    throw new ResponseError(response);
                 }
                 throw new ServerError(response, error);
             }

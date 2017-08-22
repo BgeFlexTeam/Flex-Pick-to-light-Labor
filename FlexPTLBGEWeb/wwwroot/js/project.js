@@ -38,6 +38,7 @@ var Project;
         }
         static async Post(url, parameter = undefined, type = FetchType.json) {
             const headers = new Headers();
+            headers.append(`Content-Type`, `application/json`);
             const response = await fetch(url, {
                 method: "POST",
                 headers: headers,
@@ -70,4 +71,7 @@ var Project;
         }
     }
     Project.Fetch = Fetch;
+    class Part {
+    }
+    Project.Part = Part;
 })(Project || (Project = {}));

@@ -27,7 +27,8 @@ let UnitCreationStation = class UnitCreationStation extends Polymer.Element {
     }
     async createSNTap() {
         try {
-            let response = await Project.Fetch.Post(`/api/Part/createSN`, this.$.productSelector.selectedItem);
+            let x = this.$.productSelector.selectedItem;
+            let response = await Project.Fetch.Post(`/api/Part/createSN`, x);
         }
         catch (error) {
             console.log(error);

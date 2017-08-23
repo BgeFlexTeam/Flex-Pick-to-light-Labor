@@ -1,9 +1,33 @@
+<script src="./lib/webcomponentsjs/webcomponents-lite.js"></script>
+<link rel="import" href="./lib/paper-input/paper-input.html">
+<link rel="import" href="./lib/paper-button/paper-button.html">
+<link rel="import" href="./lib/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="./lib/iron-icon/iron-icon.html">
+<link rel="import" href="./lib/iron-list/iron-list.html">
+
 <dom-module id="kitting-station">
-	<template>
-		<link rel="stylesheet" href="./unit-creation-station.css">
-		<div class="card">
-			Kitting station...
-		</div>
-	</template>
-	<script src="js/kitting-station.js"></script>
+	<template>	
+			<link rel="stylesheet" href="./kitting-station.css">
+			<div class="card">
+				<div>
+					<h1>Read the serial number of product!</h1>
+					<paper-input always-float-label label="Serial number" id="kittingSnInputBox" on-keyup="_txtKittingKeypress"></paper-input>
+					<iron-label>
+						<paper-button id="btnKitting" on-tap="kittingSNTap" raised>Kitting!</paper-button>
+						<span id="kittinglabel"></span>
+					</iron-label>
+				</div>
+			</div>
+			<div class="card">
+				<h1>BOM list:</h1>
+				<iron-list id="bomlist" items="[[items]]" as="item">
+					<template>
+						<div class="item">
+							<p><b>#[[index]] - [[item.partName]]</b> ( Code: [[item.code]] )</p>
+						</div>
+					</template>
+				</iron-list>
+			</div>
+		</template>
+		<script src="js/kitting-station.js"></script>
 </dom-module>

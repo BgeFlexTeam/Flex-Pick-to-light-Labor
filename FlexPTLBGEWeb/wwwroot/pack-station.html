@@ -5,11 +5,12 @@
 <link rel="import" href="./lib/iron-icon/iron-icon.html">
 
 <dom-module id="pack-station">
-	<template>				
+	<template>
+		<link rel="stylesheet" href="./pack-station.css">
 		<div class="card">
 			<div>
 				<h1>Read the serail number of product!</h1>
-				<paper-input always-float-label label="Serial number" id="finishSnInputBox"></paper-input>
+				<paper-input always-float-label label="Serial number" id="finishSnInputBox" on-keyup="_txtPackKeypress"></paper-input>
 				<iron-label>
 					<paper-button id="btnFinish" on-tap="packSNTap" raised>Pack!</paper-button>
 					<span id="finishlabel"></span>

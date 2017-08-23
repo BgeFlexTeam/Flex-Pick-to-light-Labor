@@ -87,7 +87,7 @@ namespace Project {
         public id: number;
         public partName: string;
         public partFamilyID: number;
-        public Code: string;
+        public code: string;
     }
 
      export class Product {
@@ -105,10 +105,15 @@ namespace Project {
     }
      export class Assembly {
         public id: number;
-        public serialNumber: number;
+        public serialNumber: string;
         public assembledPartID: number;
         public assemblyOrder: number;
         public AssembledTime: Date;
+    }
+    export class AssemblyData {
+        public serialNumber: string;
+        public partName: string;
+        public code: string;
     }
 
 }

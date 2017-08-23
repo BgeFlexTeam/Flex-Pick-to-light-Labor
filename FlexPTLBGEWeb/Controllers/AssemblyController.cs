@@ -25,7 +25,7 @@ namespace FlexPTLBGEWeb.Controllers
 
         
         [HttpPost]       
-        public bool assemblyPart([FromBody] Product p)
+        public bool assemblyPart([FromBody] AssemblyData p)
         {
             if(p != null && p.SerialNumber != null){
                 using (SqlConnection connection = new SqlConnection(connectionString))
@@ -47,17 +47,21 @@ namespace FlexPTLBGEWeb.Controllers
          [HttpPost]       
         public Part getNextBom([FromBody] Product p)
         {
-            if(p != null && p.SerialNumber.Length>0){
-                using (SqlConnection connection = new SqlConnection(connectionString))
-                {
-                    connection.Open();
-                    DynamicParameters parameters = new DynamicParameters();                  
-                    parameters.Add("@SerialNumber",  p.SerialNumber);
-                    var sql = "SELECT p.* FROM [Assembly] a INNER JOIN Part p ON p.ID = a.AssembledPartID WHERE a.SerialNumber = @SerialNumber and a.AssembledTime IS NULL";
-                    Part mypart = connection.QueryFirst<Part>(sql, parameters);                       
-                    return mypart;   
+            try{
+                if(p != null && p.SerialNumber.Length>0){
+                    using (SqlConnection connection = new SqlConnection(connectionString))
+                    {
+                        connection.Open();
+                        DynamicParameters parameters = new DynamicParameters();                  
+                        parameters.Add("@SerialNumber",  p.SerialNumber);
+                        var sql = "SELECT p.* FROM [Assembly] a INNER JOIN Part p ON p.ID = a.AssembledPartID WHERE a.SerialNumber = @SerialNumber and a.AssembledTime IS NULL";                        
+                        Part mypart = connection.QueryFirst<Part>(sql, parameters);                       
+                        return mypart;   
+                    }
+                }else{
+                    return null;
                 }
-            }else{
+            }catch(System.Exception){
                 return null;
             }
         }

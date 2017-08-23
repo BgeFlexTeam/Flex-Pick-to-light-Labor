@@ -10,22 +10,25 @@
 		<link rel="stylesheet" href="./assembly-station.css">
 		<h1>Assembly station</h1>
 		<div class="card">
-			<div id="snreaddiv">
+			<div class="first" id="snreaddiv">
 				<h3>Read the serail number of product!</h3>
-				<paper-input always-float-label label="Serial number" id="productSNInputBox"></paper-input>
+				<paper-input always-float-label label="Serial number" id="productSNInputBox" on-keyup="_txtProdKeypress"></paper-input>
 				<iron-label>
 					<paper-button id="btnReadBOM" on-tap="readBOMTap" raised>Start</paper-button>
-					<!--<span id="finishlabel"></span>-->
+					<span id="snlabel"></span>
 				</iron-label>
-			</div>			
+			</div>	
+			<div class="second">
+				<img id="productimage" src="" item-icon height="100px">
+			</div>		
 		</div>
 		<div class="card">
 			<div id="partreaddiv"> 
-				<h3>Read the code of <span id="nextpartlabel"></span> part!</h3>
-				<paper-input always-float-label label="Part number" id="partInputBox"></paper-input>
+				<h3 id="nextpartlabel"></h3>
+				<paper-input always-float-label label="Part number" id="partInputBox" on-keyup="_txtPartKeypress"></paper-input>
 				<iron-label>
-					<paper-button id="btnReadPart" on-tap="readPartTap" raised>OK</paper-button>
-					<!--<span id="finishlabel"></span>-->
+					<paper-button id="btnReadPart" on-tap="readPartTap"  raised>OK</paper-button>
+					<span id="partlabel"></span>
 				</iron-label>
 			</div>
 		</div>

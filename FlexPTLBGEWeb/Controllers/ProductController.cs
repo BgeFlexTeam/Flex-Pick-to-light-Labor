@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using FlexPTLBGEWeb.Models;
 using System.Data;
 using System.Data.SqlClient;
+using System;
 using System.Linq;
 using Dapper;
 using Microsoft.Extensions.Configuration;
@@ -25,20 +26,23 @@ using Dapper.Contrib.Extensions;
         [HttpPost]       
         public Product packSN([FromBody] Product p)
         {
-            if(p != null && p.SerialNumber.Length>0){
-                using (SqlConnection connection = new SqlConnection(connectionString))
-                {
-                    connection.Open();
-                    DynamicParameters parameters = new DynamicParameters();
-                    string serialnumber = p.SerialNumber;
-                    parameters.Add("@SerialNumber", serialnumber);
-                    var sql = "SELECT * FROM Product WHERE SerialNumber = @SerialNumber";
-                    Product myproduct = connection.QueryFirst<Product>(sql, parameters);
-                    connection.Update(new Product() { ID = myproduct.ID, SerialNumber=myproduct.SerialNumber, PartID=myproduct.PartID, CreationTime=myproduct.CreationTime, IsComplete = true });   
-                    return myproduct;   
-                    //var myproduct = connection.Get<Product>(1);
+            try{
+                if(p != null && p.SerialNumber.Length>0){
+                    using (SqlConnection connection = new SqlConnection(connectionString))
+                    {
+                        connection.Open();
+                        DynamicParameters parameters = new DynamicParameters();
+                        string serialnumber = p.SerialNumber;
+                        parameters.Add("@SerialNumber", serialnumber);
+                        var sql = "SELECT * FROM Product WHERE SerialNumber = @SerialNumber";
+                        Product myproduct = connection.QueryFirst<Product>(sql, parameters);
+                        connection.Update(new Product() { ID = myproduct.ID, SerialNumber=myproduct.SerialNumber, PartID=myproduct.PartID, CreationTime=myproduct.CreationTime, IsComplete = true });   
+                        return myproduct;
+                    }
+                }else{
+                    return null;
                 }
-            }else{
+            }catch(Exception) {
                 return null;
             }
         }
@@ -46,21 +50,49 @@ using Dapper.Contrib.Extensions;
         [HttpPost]       
         public Product getProductBySN([FromBody] Product p)
         {
-            if(p != null && p.SerialNumber.Length>0){
-                using (SqlConnection connection = new SqlConnection(connectionString))
-                {
-                    connection.Open();
-                    DynamicParameters parameters = new DynamicParameters();
-                    string serialnumber = p.SerialNumber;
-                    parameters.Add("@SerialNumber", serialnumber);
-                    var sql = "SELECT * FROM Product WHERE SerialNumber = @SerialNumber";
-                    Product myproduct = connection.QueryFirst<Product>(sql, parameters);                       
-                    return myproduct;   
+            try{
+                if(p != null && p.SerialNumber.Length>0){
+                    using (SqlConnection connection = new SqlConnection(connectionString))
+                    {
+                        connection.Open();
+                        DynamicParameters parameters = new DynamicParameters();
+                        string serialnumber = p.SerialNumber;
+                        parameters.Add("@SerialNumber", serialnumber);
+                        var sql = "SELECT * FROM Product WHERE SerialNumber = @SerialNumber";
+                        Product myproduct = connection.QueryFirst<Product>(sql, parameters);                       
+                        return myproduct;   
+                    }
+                }else{
+                    return null;
                 }
-            }else{
+            }catch(Exception){
                 return null;
             }
         }
+        
+        [HttpPost]       
+        public Part getImageUrlBySN([FromBody] Product p)
+        {
+            try{
+                if(p != null && p.SerialNumber.Length>0){
+                    using (SqlConnection connection = new SqlConnection(connectionString))
+                    {
+                        connection.Open();
+                        DynamicParameters parameters = new DynamicParameters();
+                        string serialnumber = p.SerialNumber;
+                        parameters.Add("@SerialNumber", serialnumber);
+                        var sql = "SELECT PartName FROM Product pr INNER JOIN Part p ON pr.PartID = p.ID WHERE Serialnumber = @SerialNumber";
+                        Part mypart = connection.QueryFirst<Part>(sql, parameters);                       
+                        return mypart;   
+                    }
+                }else{
+                    return null;
+                }
+            }catch(Exception){
+                return null;
+            }
+        }
+        
         
     }
 }

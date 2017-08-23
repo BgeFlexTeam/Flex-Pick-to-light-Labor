@@ -5,10 +5,14 @@
 class PackStation extends Polymer.Element {
     connectedCallback(): void {
         super.connectedCallback();
+        this.$.finishSnInputBox.value = "";
+        this.$.finishlabel.innerText = "";
         this.$.finishSnInputBox.focus();
         this.$.finishSnInputBox.focused = true;
-        this.$.finishSnInputBox.value="";
-         this.$.finishlabel.innerText ="";
+    }
+
+    async _txtPackKeypress(e: any): Promise<void> {
+        if (e.key === "Enter") { this.packSNTap(); }
     }
 
     async packSNTap(): Promise<any> {
@@ -17,12 +21,18 @@ class PackStation extends Polymer.Element {
             if (myproduct.isComplete === true) {
                 this.$.finishlabel.innerText = "Pack is complete yet! (SN: " + myproduct.serialNumber + ")";
                 this.$.finishSnInputBox.value = "";
+                this.$.finishSnInputBox.focus();
+                this.$.finishSnInputBox.focused = true;
             } else {
                 this.$.finishlabel.innerText = "Pack is complete. (SN: " + myproduct.serialNumber + ")";
                 this.$.finishSnInputBox.value = "";
+                this.$.finishSnInputBox.focus();
+                this.$.finishSnInputBox.focused = true;
             }
         } else {
             this.$.finishlabel.innerText = "Invalid SerialNumber, pack is uncomplete.";
+            this.$.finishSnInputBox.focus();
+            this.$.finishSnInputBox.focused = true;
         }
     }
 

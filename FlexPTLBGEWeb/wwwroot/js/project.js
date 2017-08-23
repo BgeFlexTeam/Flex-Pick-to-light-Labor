@@ -83,4 +83,7 @@ var Project;
     class Assembly {
     }
     Project.Assembly = Assembly;
+    class AssemblyData {
+    }
+    Project.AssemblyData = AssemblyData;
 })(Project || (Project = {}));

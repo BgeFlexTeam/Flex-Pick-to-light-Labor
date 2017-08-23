@@ -34,13 +34,15 @@ class AssemblyStation extends Polymer.Element {
                 this.$.partInputBox.focus();
             } else {
                 this.$.nextpartlabel.innerText = "BOM is complete.";
+                this.$.productSNInputBox.value = "";
                 this.$.productSNInputBox.focus();
                 this.$.productSNInputBox.focused = true;
             }
         } else {
+            this.$.snlabel.innerText = "Invalid SerialNumber! - " + this.$.productSNInputBox.value;
+            this.$.productSNInputBox.value = "";
             this.$.productSNInputBox.focus();
             this.$.productSNInputBox.focused = true;
-            this.$.snlabel.innerText = "Invalid SerialNumber!";
         }
     }
 
@@ -84,8 +86,12 @@ class AssemblyStation extends Polymer.Element {
             p.serialNumber = this.$.productSNInputBox.value;
             if (p.serialNumber != null && p.serialNumber.length > 0) {
                 this.prod = await Project.Fetch.Post(`/api/Product/getProductBySN`, p);
-                let mainpart : Project.Part = await Project.Fetch.Post(`/api/Product/getImageUrlBySN`, p);
-                if(mainpart!=null) {this.$.productimage.src ="./img/"+mainpart.partName+".png";} else {this.$.productimage.src ="";}
+                let mainpart: Project.Part = await Project.Fetch.Post(`/api/Product/getImageUrlBySN`, p);
+                if (mainpart != null) {
+                    this.$.productimage.src = "./img/" + mainpart.partName + ".png";
+                } else {
+                    this.$.productimage.src = "";
+                }
                 return this.prod;
             } else {
                 return null;

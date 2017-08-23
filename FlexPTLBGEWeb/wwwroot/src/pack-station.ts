@@ -30,7 +30,8 @@ class PackStation extends Polymer.Element {
                 this.$.finishSnInputBox.focused = true;
             }
         } else {
-            this.$.finishlabel.innerText = "Invalid SerialNumber, pack is uncomplete.";
+            this.$.finishlabel.innerText = "Invalid SerialNumber ( " + this.$.finishSnInputBox.value + " ), pack is uncomplete.";
+            this.$.finishSnInputBox.value = "";
             this.$.finishSnInputBox.focus();
             this.$.finishSnInputBox.focused = true;
         }

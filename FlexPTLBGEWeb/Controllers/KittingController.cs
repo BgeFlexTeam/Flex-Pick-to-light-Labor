@@ -52,7 +52,7 @@ namespace FlexPTLBGEWeb.Controllers
                 string sql = "dbo.ptlAddRequest";
                 string xml_param="<ptl><application><name>PTLBGE</name><version>1.0</version></application><signal>PICK</signal><signalref>N/A</signalref>";
                 xml_param+="<request><rpos>1</rpos><line>Line1</line><zone>Zone1</zone><uniqid>1</uniqid><description>-</description>";
-                xml_param+="<data><item>LGH-0000000FW856</item><qty>4</qty></data></request></ptl>";
+                xml_param+="<data><item>"+p.PartName+"</item><qty>4</qty></data></request></ptl>";
                 var param = new DynamicParameters();
                 param.Add("@Request", xml_param);
 

@@ -46,6 +46,26 @@ var Project;
             });
             return this.Result(response, type);
         }
+        static async LocalPost(url, parameter = undefined, type = FetchType.json) {
+            const headers = new Headers();
+            headers.append(`Content-Type`, `application/x-www-form-urlencoded;charset=UTF-8`);
+            headers.append(`Access-Control-Allow-Origin`, `*`);
+            headers.append(`Access-Control-Allow-Methods`, `OPTIONS, POST`);
+            headers.append(`Access-Control-Allow-Headers`, `Content-Type`);
+            let params = undefined;
+            if (parameter) {
+                params = Object.keys(parameter).map((key) => {
+                    return encodeURIComponent(key) + "=" + encodeURIComponent(parameter[key]);
+                }).join("&");
+            }
+            const response = await fetch(url, {
+                method: "POST",
+                headers: headers,
+                body: params,
+                mode: "cors"
+            });
+            return this.Result(response, type);
+        }
         static async Result(response, type = FetchType.json) {
             if (response.ok) {
                 if (response.status === 200) {
@@ -71,6 +91,18 @@ var Project;
         }
     }
     Project.Fetch = Fetch;
+    class Label {
+        static async Print(serialNumber) {
+            let result = await Fetch.Post("/api/Label/Print", { serialNumber: serialNumber }, FetchType.text);
+            if (result != null) {
+                return await Fetch.LocalPost(`http://localhost:5002/api/print`, {
+                    labelContent: result,
+                    printerName: "zebra"
+                });
+            }
+        }
+    }
+    Project.Label = Label;
     class Part {
     }
     Project.Part = Part;

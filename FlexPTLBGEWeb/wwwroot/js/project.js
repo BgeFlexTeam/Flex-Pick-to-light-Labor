@@ -1,1 +1,121 @@
-var _0x07bb=['cors','clone','Print','/api/Label/Print','LocalPost','Label','Part','Product','Bom','Assembly','AssemblyData','json','text','blob','void','FetchType','message','status','url','ResponseError','stack','StackTrace','Get','append','Content-Type','application/json','GET','Result','Post','POST','stringify','application/x-www-form-urlencoded;charset=UTF-8','Access-Control-Allow-Origin','OPTIONS,\x20POST','Access-Control-Allow-Headers','keys','map','join'];(function(_0x1925b6,_0xc1c3b9){var _0x33a181=function(_0x2500e5){while(--_0x2500e5){_0x1925b6['push'](_0x1925b6['shift']());}};_0x33a181(++_0xc1c3b9);}(_0x07bb,0xc9));var _0xb07b=function(_0xb347b9,_0x3c4105){_0xb347b9=_0xb347b9-0x0;var _0x40091b=_0x07bb[_0xb347b9];return _0x40091b;};var Project;(function(_0x77bc87){let _0x23a813;(function(_0x166ab9){_0x166ab9[_0x166ab9[_0xb07b('0x0')]=0x0]=_0xb07b('0x0');_0x166ab9[_0x166ab9['text']=0x1]=_0xb07b('0x1');_0x166ab9[_0x166ab9[_0xb07b('0x2')]=0x2]=_0xb07b('0x2');_0x166ab9[_0x166ab9[_0xb07b('0x3')]=0x3]='void';}(_0x23a813=_0x77bc87[_0xb07b('0x4')]||(_0x77bc87[_0xb07b('0x4')]={})));class ResponseError extends Error{constructor(_0x3ea9c4){super(null);this[_0xb07b('0x5')]=_0x3ea9c4['statusText'];this[_0xb07b('0x6')]=_0x3ea9c4['status'];this[_0xb07b('0x7')]=_0x3ea9c4[_0xb07b('0x7')];}}_0x77bc87[_0xb07b('0x8')]=ResponseError;class ServerError extends Error{constructor(_0x16123e,_0x547bc7){super(_0x547bc7);this[_0xb07b('0x5')]=this[_0xb07b('0x5')]||_0x547bc7['ExceptionMessage'];this[_0xb07b('0x9')]=this[_0xb07b('0x9')]||_0x547bc7[_0xb07b('0xa')];this[_0xb07b('0x6')]=_0x16123e[_0xb07b('0x6')];this[_0xb07b('0x7')]=_0x16123e[_0xb07b('0x7')];}}_0x77bc87['ServerError']=ServerError;class Fetch{static async[_0xb07b('0xb')](_0x120784,_0x43c530=_0x23a813['json']){const _0x569013=new Headers();_0x569013[_0xb07b('0xc')](_0xb07b('0xd'),_0xb07b('0xe'));const _0x18f649=await fetch(_0x120784,{'method':_0xb07b('0xf'),'headers':_0x569013});return this[_0xb07b('0x10')](_0x18f649,_0x43c530);}static async[_0xb07b('0x11')](_0x531beb,_0x5f11bc=undefined,_0x4b1903=_0x23a813[_0xb07b('0x0')]){const _0x5522cc=new Headers();_0x5522cc['append'](_0xb07b('0xd'),_0xb07b('0xe'));const _0x5b20ab=await fetch(_0x531beb,{'method':_0xb07b('0x12'),'headers':_0x5522cc,'body':JSON[_0xb07b('0x13')](_0x5f11bc)});return this[_0xb07b('0x10')](_0x5b20ab,_0x4b1903);}static async['LocalPost'](_0x26a637,_0x52e816=undefined,_0x2a229f=_0x23a813[_0xb07b('0x0')]){const _0x58a60e=new Headers();_0x58a60e[_0xb07b('0xc')](_0xb07b('0xd'),_0xb07b('0x14'));_0x58a60e[_0xb07b('0xc')](_0xb07b('0x15'),'*');_0x58a60e[_0xb07b('0xc')]('Access-Control-Allow-Methods',_0xb07b('0x16'));_0x58a60e[_0xb07b('0xc')](_0xb07b('0x17'),_0xb07b('0xd'));let _0x4e8180=undefined;if(_0x52e816){_0x4e8180=Object[_0xb07b('0x18')](_0x52e816)[_0xb07b('0x19')](_0x8ac489=>{return encodeURIComponent(_0x8ac489)+'='+encodeURIComponent(_0x52e816[_0x8ac489]);})[_0xb07b('0x1a')]('&');}const _0x48736e=await fetch(_0x26a637,{'method':_0xb07b('0x12'),'headers':_0x58a60e,'body':_0x4e8180,'mode':_0xb07b('0x1b')});return this['Result'](_0x48736e,_0x2a229f);}static async['Result'](_0x132a20,_0x169f3a=_0x23a813['json']){if(_0x132a20['ok']){if(_0x132a20[_0xb07b('0x6')]===0xc8){switch(_0x169f3a){case _0x23a813[_0xb07b('0x0')]:return await _0x132a20[_0xb07b('0x0')]();case _0x23a813[_0xb07b('0x2')]:return await _0x132a20['blob']();case _0x23a813['text']:return await _0x132a20[_0xb07b('0x1')]();case _0x23a813['void']:return undefined;}}return null;}else{let _0x334a78=null;try{_0x334a78=await _0x132a20[_0xb07b('0x1c')]()[_0xb07b('0x0')]();}catch(_0x524445){throw new ResponseError(_0x132a20);}throw new ServerError(_0x132a20,_0x334a78);}}}_0x77bc87['Fetch']=Fetch;class Label{static async[_0xb07b('0x1d')](_0x801d10){let _0x30dc35=await Fetch[_0xb07b('0x11')](_0xb07b('0x1e'),{'serialNumber':_0x801d10},_0x23a813[_0xb07b('0x1')]);if(_0x30dc35!=null){return await Fetch[_0xb07b('0x1f')]('http://localhost:5002/api/print',{'labelContent':_0x30dc35,'printerName':'zebra'});}}}_0x77bc87[_0xb07b('0x20')]=Label;class Part{}_0x77bc87[_0xb07b('0x21')]=Part;class Product{}_0x77bc87[_0xb07b('0x22')]=Product;class Bom{}_0x77bc87[_0xb07b('0x23')]=Bom;class Assembly{}_0x77bc87[_0xb07b('0x24')]=Assembly;class AssemblyData{}_0x77bc87[_0xb07b('0x25')]=AssemblyData;}(Project||(Project={})));
+var Project;
+(function (Project) {
+    let FetchType;
+    (function (FetchType) {
+        FetchType[FetchType["json"] = 0] = "json";
+        FetchType[FetchType["text"] = 1] = "text";
+        FetchType[FetchType["blob"] = 2] = "blob";
+        FetchType[FetchType["void"] = 3] = "void";
+    })(FetchType = Project.FetchType || (Project.FetchType = {}));
+    class ResponseError extends Error {
+        constructor(response) {
+            super(null);
+            this.message = response.statusText;
+            this.status = response.status;
+            this.url = response.url;
+        }
+    }
+    Project.ResponseError = ResponseError;
+    class ServerError extends Error {
+        constructor(response, result) {
+            super(result);
+            this.message = this.message || result.ExceptionMessage;
+            this.stack = this.stack || result.StackTrace;
+            this.status = response.status;
+            this.url = response.url;
+        }
+    }
+    Project.ServerError = ServerError;
+    class Fetch {
+        static async Get(url, type = FetchType.json) {
+            const headers = new Headers();
+            headers.append(`Content-Type`, `application/json`);
+            const response = await fetch(url, {
+                method: "GET",
+                headers: headers
+            }); // fetch throws no error
+            return this.Result(response, type);
+        }
+        static async Post(url, parameter = undefined, type = FetchType.json) {
+            const headers = new Headers();
+            headers.append(`Content-Type`, `application/json`);
+            const response = await fetch(url, {
+                method: "POST",
+                headers: headers,
+                body: JSON.stringify(parameter)
+            });
+            return this.Result(response, type);
+        }
+        static async LocalPost(url, parameter = undefined, type = FetchType.json) {
+            const headers = new Headers();
+            headers.append(`Content-Type`, `application/x-www-form-urlencoded;charset=UTF-8`);
+            headers.append(`Access-Control-Allow-Origin`, `*`);
+            headers.append(`Access-Control-Allow-Methods`, `OPTIONS, POST`);
+            headers.append(`Access-Control-Allow-Headers`, `Content-Type`);
+            let params = undefined;
+            if (parameter) {
+                params = Object.keys(parameter).map((key) => {
+                    return encodeURIComponent(key) + "=" + encodeURIComponent(parameter[key]);
+                }).join("&");
+            }
+            const response = await fetch(url, {
+                method: "POST",
+                headers: headers,
+                body: params,
+                mode: "cors"
+            });
+            return this.Result(response, type);
+        }
+        static async Result(response, type = FetchType.json) {
+            if (response.ok) {
+                if (response.status === 200) {
+                    switch (type) {
+                        case FetchType.json: return await response.json();
+                        case FetchType.blob: return await response.blob();
+                        case FetchType.text: return await response.text();
+                        case FetchType.void: return undefined;
+                    }
+                }
+                return null; // 204 - No content
+            }
+            else {
+                let error = null;
+                try {
+                    error = await response.clone().json();
+                }
+                catch (error) {
+                    throw new ResponseError(response);
+                }
+                throw new ServerError(response, error);
+            }
+        }
+    }
+    Project.Fetch = Fetch;
+    class Label {
+        static async Print(serialNumber) {
+            let result = await Fetch.Post("/api/Label/Print", { serialNumber: serialNumber }, FetchType.text);
+            if (result != null) {
+                return await Fetch.LocalPost(`http://localhost:5002/api/print`, {
+                    labelContent: result,
+                    printerName: "zebra"
+                });
+            }
+        }
+    }
+    Project.Label = Label;
+    class Part {
+    }
+    Project.Part = Part;
+    class Product {
+    }
+    Project.Product = Product;
+    class Bom {
+    }
+    Project.Bom = Bom;
+    class Assembly {
+    }
+    Project.Assembly = Assembly;
+    class AssemblyData {
+    }
+    Project.AssemblyData = AssemblyData;
+})(Project || (Project = {}));

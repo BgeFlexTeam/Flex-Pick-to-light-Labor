@@ -6,8 +6,7 @@
   "repository": "https://github.com/BgeFlexTeam/Flex-Pick-to-light-Labor",
   "author": "Flex Team",
   "license": "MIT",
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
     "gulp": "^3.9.1",
     "gulp-install": "^1.1.0",

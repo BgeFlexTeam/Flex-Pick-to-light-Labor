@@ -54,7 +54,7 @@ namespace FlexPTLBGEWeb.Controllers
                         connection.Open();
                         DynamicParameters parameters = new DynamicParameters();                  
                         parameters.Add("@SerialNumber",  p.SerialNumber);
-                        var sql = "SELECT p.* FROM [Assembly] a INNER JOIN Part p ON p.ID = a.AssembledPartID WHERE a.SerialNumber = @SerialNumber and a.AssembledTime IS NULL";                        
+                        var sql = "SELECT p.* FROM [Assembly] a INNER JOIN Part p ON p.ID = a.AssembledPartID WHERE a.SerialNumber = @SerialNumber and a.AssembledTime IS NULL order by a.AssemblyOrder";                        
                         Part mypart = connection.QueryFirst<Part>(sql, parameters);                       
                         return mypart;   
                     }

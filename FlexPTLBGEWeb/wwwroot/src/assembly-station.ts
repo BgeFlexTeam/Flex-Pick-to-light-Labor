@@ -34,6 +34,7 @@ class AssemblyStation extends Polymer.Element {
                 this.$.partInputBox.focus();
             } else {
                 this.$.nextpartlabel.innerText = "BOM is complete.";
+                this.$.partInputBox.value = "";
                 this.$.productSNInputBox.value = "";
                 this.$.productSNInputBox.focus();
                 this.$.productSNInputBox.focused = true;

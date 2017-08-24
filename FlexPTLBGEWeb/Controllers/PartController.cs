@@ -37,7 +37,7 @@ namespace FlexPTLBGEWeb.Controllers
                 List<Part> result = connection.Query<Part>("SELECT * FROM Part WHERE PartFamilyID = (SELECT ID FROM PartFamily WHERE PartFamilyName = 'Product')").ToList();
                 return result;
             }
-        }   
+        }
 
         [HttpPost]
         public Product createSN([FromBody] Part p){           

@@ -1,0 +1,8 @@
+<?xml version='1.0'?>
+<Obfuscator>
+    <Var name="InPath" value="bin/release/netcoreapp2.0/win10-x64/publish" />
+    <Var name="OutPath" value="bin/release/netcoreapp2.0/win10-x64/publish/obfuscar" />
+    <Var name="KeepPublicApi" value="true" />
+    <Var name="HidePrivateApi" value="true" />
+    <Module file="$(InPath)\FlexPTLBGEWeb.dll" />
+</Obfuscator>

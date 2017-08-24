@@ -2,6 +2,7 @@ var gulp = require('gulp');
 var tsc = require('gulp-typescript');
 var watch = require('gulp-watch');
 var install = require("gulp-install");
+var javascriptObfuscator = require('gulp-javascript-obfuscator');
 
 //Copy dependecies to ''wwwroot/lib/'
 gulp.task("copy", function () {
@@ -17,7 +18,7 @@ gulp.task("copy", function () {
 //Transpile 'src/*.ts' files
 gulp.task("ts", function () {
     var tsProject = tsc.createProject('tsconfig.json');
-    
+
     return tsProject
         .src()
         .pipe(tsProject())
@@ -30,6 +31,12 @@ gulp.task("watch-ts", function () {
     return watch('wwwroot/src/*.ts', function () {
         gulp.start('ts');
     });
+});
+
+gulp.task("ob", function () {
+    return gulp.src("wwwroot/js/*.js")
+        .pipe(javascriptObfuscator())
+        .pipe(gulp.dest('wwwroot/js'));
 });
 
 //Install Npm modules

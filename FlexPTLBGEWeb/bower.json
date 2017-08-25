@@ -17,7 +17,7 @@
     "polymer": "Polymer/polymer#^2.0.2",
     "webcomponentsjs": "webcomponents/webcomponentsjs#^1.0.0",
     "polymer2-ts": "^1.1.22",
-    "vaadin-combo-box": "^3.0.0-alpha2"
+    "vaadin-combo-box": "^2.0.0"
     
   },
   "resolutions": {

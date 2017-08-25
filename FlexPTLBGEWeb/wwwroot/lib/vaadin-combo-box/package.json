@@ -1,6 +1,6 @@
 {
   "name": "vaadin-combo-box",
-  "version": "2.0.0",
+  "version": "3.0.0-alpha2",
   "description": "Polymer element for displaying a list of items with filtering",
   "main": "vaadin-combo-box.html",
   "repository": "vaadin/vaadin-combo-box",
@@ -27,7 +27,7 @@
     "gulp-html-extract": "^0.3.0",
     "gulp-stylelint": "^3.7.0",
     "polymer-cli": "^0.18.0",
-    "stylelint": "^7.10.0",
+    "stylelint": "7.10.1",
     "stylelint-config-vaadin": "latest",
     "wct-random-output": "^0.2.0",
     "web-component-tester": "^v6.0.0-prerelease.9",

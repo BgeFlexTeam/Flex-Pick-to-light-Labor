@@ -21,24 +21,13 @@ namespace FlexPTLBGEWeb
         public static IWebHost BuildWebHost(string[] args)
         {
             return WebHost.CreateDefaultBuilder()
-              .ConfigureAppConfiguration(ConfigConfiguration)
-              .ConfigureLogging(ConfigureLogger)
+              .UseConfiguration(new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("hosting.json", optional: true)
+                .Build()
+            )
               .UseStartup<Startup>()
               .Build();
-        }
-
-        static void ConfigConfiguration(WebHostBuilderContext ctx, IConfigurationBuilder config)
-        {
-            config.SetBasePath(Directory.GetCurrentDirectory())
-              .AddJsonFile("appsettings.json", false, true)
-              .AddEnvironmentVariables();
-        }
-
-        static void ConfigureLogger(WebHostBuilderContext ctx, ILoggingBuilder logging)
-        {
-            logging.AddConfiguration(ctx.Configuration.GetSection("Logging"));
-            logging.AddConsole();
-            logging.AddDebug();
         }
     }
 }

@@ -8,10 +8,10 @@
 <dom-module id="assembly-station">
 	<template>
 		<link rel="stylesheet" href="./assembly-station.css">
-		<h1>Assembly station</h1>
+		
 		<div class="card">
 			<div class="first" id="snreaddiv">
-				<h3>Read the serail number of product!</h3>
+				<h1>Read the serial number of product!</h1>
 				<paper-input always-float-label label="Serial number" id="productSNInputBox" on-keyup="_txtProdKeypress"></paper-input>
 				<iron-label>
 					<paper-button id="btnReadBOM" on-tap="readBOMTap" raised>Start</paper-button>
@@ -32,9 +32,9 @@
 				</iron-label>
 			</div>
 		</div>
-		<footer class="card">
+		<div class="card">
 			<paper-progress id="assyProgress" value="0"></paper-progress>
-		</footer>
+		</div>
 	</template>
 	<script src="js/assembly-station.js"></script>
 </dom-module>

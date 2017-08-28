@@ -47,42 +47,38 @@ namespace FlexPTLBGEWeb.Controllers
         public bool InsertToPTL([FromBody] List<Part> p)
         {           
             try{
-                if(p.Count>0){
-                    int uid = 0;
-
-                     Dictionary<string, int> mydictionary = new Dictionary<string, int>();
-                     foreach (Part mypart in p)
-                    {
-                        uid += p.ID;
-                        if(!mydictionary.ContainsKey(mypart.Code)){
-                            mydictionary.Add(mypart.Code,1);
-                        }else{
-                            int value = mydictionary[mypart.Code];
-                            value++;
-                            mydictionary[mypart.Code]=value;
-                        }
-                    }
-
-                    string sql = "dbo.ptlAddRequest";
-                    string xml_param="<ptl><application><name>PTLBGE</name><version>1.0</version></application><signal>PICK</signal><signalref>N/A</signalref>";
-                    xml_param+="<request><rpos>1</rpos><line>Line1</line><zone>Zone1</zone><uniqid>"+uid+"</uniqid><description>-</description>";
-                   
-                    foreach (var pair in mydictionary)
-                    {
-                        xml_param+="<data><item>"+pair.Key+"</item><qty>"+pair.Value+"</qty></data>";
-                    }
-                    
-                    xml_param+="</request></ptl>";
-                    var param = new DynamicParameters();
-                    param.Add("@Request", xml_param);
-
+                string sql = "dbo.ptlAddRequest";
+                string xml_param="<ptl><application><name>PTLBGE</name><version>1.0</version></application><signal>PICK</signal><signalref>N/A</signalref>";
+                xml_param+="<request><rpos>1</rpos><line>Line1</line><zone>Zone1</zone><uniqid>1</uniqid><description>-</description>";
                 
-                    using (SqlConnection connection = new SqlConnection(connectionString))
-                    {
-                        connection.Open();
-                        var affectedRows = connection.Execute(sql, param, commandType: CommandType.StoredProcedure);
-                        return affectedRows>0;                    
+                Dictionary<string, int> mydictionary = new Dictionary<string, int>();
+
+                foreach (Part mypart in p)
+                {
+                    if(!mydictionary.ContainsKey(mypart.Code)){
+                        mydictionary.Add(mypart.Code,1);
+                    }else{
+                        int value = mydictionary[mypart.Code];
+                        value++;
+                        mydictionary[mypart.Code]=value;
                     }
+                }
+               
+               foreach (var pair in mydictionary)
+                {
+                    xml_param+="<data><item>"+pair.Key+"</item><qty>"+pair.Value+"</qty></data>";
+                }
+                
+                xml_param+="</request></ptl>";
+                var param = new DynamicParameters();
+                param.Add("@Request", xml_param);
+
+               
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+                    var affectedRows = connection.Execute(sql, param, commandType: CommandType.StoredProcedure);
+                    return affectedRows>0;                    
                 }
             }catch(Exception e){
                 System.Console.WriteLine(e.Message);

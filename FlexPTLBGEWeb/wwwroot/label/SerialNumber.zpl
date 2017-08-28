@@ -6,4 +6,6 @@
 ^LL0600
 ^LS0
 ^FT113,106^A0N,50,50^FH\^FDSerialNumber: %SerialNumber%^FS
+^B3o,e,h,f,g
+^BY
 ^PQ1,0,1,Y^XZ

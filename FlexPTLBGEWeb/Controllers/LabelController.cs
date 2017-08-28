@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using System;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -16,7 +17,10 @@ namespace FlexPTLBGEWeb.Controllers {
         public string Print([FromBody] dynamic param) {
 			string labelPath = env.WebRootPath + "/label/SerialNumber.zpl";
 			string lbt = System.IO.File.ReadAllText(labelPath);
-			return lbt.Replace("%SerialNumber%", (string)param.serialNumber);
+			lbt = lbt.Replace("%SerialNumber%", (string)param.serialNumber);
+			lbt = lbt.Replace("%Product%", (string)param.product);
+			lbt = lbt.Replace("%Date%", DateTime.Now.ToString("yyyy.MM.dd"));
+			return lbt;
 		}
 	}
 }

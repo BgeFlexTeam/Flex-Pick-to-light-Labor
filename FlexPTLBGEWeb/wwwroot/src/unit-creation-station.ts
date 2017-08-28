@@ -32,7 +32,7 @@ class UnitCreationStation extends Polymer.Element {
         let myproduct: Project.Product = await this.createSN();
         if (myproduct != null) {
             this.$.responselabel.innerText = "Generated SerialNumber is: " + myproduct.serialNumber;
-            Project.Label.Print(myproduct.serialNumber);
+            Project.Label.Print(myproduct.serialNumber, this.$.productSelector.selectedItem.partName);
         } else {
             this.$.responselabel.innerText = "SerialNumber is not generated.";
         }

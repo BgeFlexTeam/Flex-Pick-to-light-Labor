@@ -107,8 +107,8 @@ namespace Project {
     }
 
     export class Label {
-        public static async Print(serialNumber: string): Promise<any> {
-			let result: any = await Fetch.Post("/api/Label/Print", { serialNumber: serialNumber }, FetchType.text);
+        public static async Print(serialNumber: string, product: string): Promise<any> {
+			let result: any = await Fetch.Post("/api/Label/Print", { serialNumber: serialNumber, product: product }, FetchType.text);
 			if (result != null) {
 				return await Fetch.LocalPost(`http://localhost:5002/api/print`, {
 					labelContent: result,

@@ -48,9 +48,10 @@ class KittingStation extends Polymer.Element {
             if (list.length === 0) { return false; }
             this.$.bomlist.items = list;
             // insert to PTL
-            for (let v of list) {
-                await Project.Fetch.Post(`/api/Kitting/InsertToPTL`, v);
-            }
+            // for (let v of list) {
+            //     await Project.Fetch.Post(`/api/Kitting/InsertToPTL`, v);
+            // }
+            await Project.Fetch.Post(`/api/Kitting/InsertToPTL`, list);
             return true;
         } catch (error) {
             return false;

@@ -18,8 +18,7 @@ namespace FlexPTLBGEWeb.Controllers
         private string connectionString;
 
         public KittingController(IOptions<AppOptions> options)
-        {
-            // Connection = new SqlConnection("data source=ZALNT254;initial catalog=PTLBGE;persist security info=True;user id=web;password=connect!;App=FlexPTLBGEWeb");
+        {            
             //Connection.Open();
             this.options = options.Value;
             connectionString = this.options.DefaultConnection;
@@ -45,14 +44,32 @@ namespace FlexPTLBGEWeb.Controllers
         }
         
         [HttpPost]      
-        public bool InsertToPTL([FromBody] Part p)
-        { 
-            //-- Test:		EXEC ptlAddRequest 'FlexFlow', '<ptl><application><name>FlexFlow</name><version>2.9.3.100</version></application><signal>PICK</signal><signalref>N/A</signalref><request><rpos>1</rpos><line>X86-ASSY01</line><zone>X86A01</zone><uniqid>S40017W</uniqid><description>SYS100782</description><data><item>LGH-0000000FW856</item><qty>4</qty></data><data><item>LGH-0000000KG396</item><qty>2</qty></data></request></ptl>'
+        public bool InsertToPTL([FromBody] List<Part> p)
+        {           
             try{
                 string sql = "dbo.ptlAddRequest";
                 string xml_param="<ptl><application><name>PTLBGE</name><version>1.0</version></application><signal>PICK</signal><signalref>N/A</signalref>";
                 xml_param+="<request><rpos>1</rpos><line>Line1</line><zone>Zone1</zone><uniqid>1</uniqid><description>-</description>";
-                xml_param+="<data><item>"+p.PartName+"</item><qty>1</qty></data></request></ptl>";
+                
+                Dictionary<string, int> mydictionary = new Dictionary<string, int>();
+
+                foreach (Part mypart in p)
+                {
+                    if(!mydictionary.ContainsKey(mypart.Code)){
+                        mydictionary.Add(mypart.Code,1);
+                    }else{
+                        int value = mydictionary[mypart.Code];
+                        value++;
+                        mydictionary[mypart.Code]=value;
+                    }
+                }
+               
+               foreach (var pair in mydictionary)
+                {
+                    xml_param+="<data><item>"+pair.Key+"</item><qty>"+pair.Value+"</qty></data>";
+                }
+                
+                xml_param+="</request></ptl>";
                 var param = new DynamicParameters();
                 param.Add("@Request", xml_param);
 
